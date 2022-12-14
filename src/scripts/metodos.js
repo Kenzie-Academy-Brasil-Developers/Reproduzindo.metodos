@@ -64,19 +64,20 @@ function methodFind(arr,callback){
       return value
     } 
   }
-  return 'underfined'
+  return undefined
 }
 console.log(methodFind(arr,callbackfind))
 
 // ---------------------------------------
 // MÉTODO INCLUDES
 function callbackincludes(value) {
-  return (value = true);
+  return value === 3
 }
-function methodIncludes(arr) {
+function methodIncludes(arr,callback) {
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 3) {
-      return callbackincludes(arr[i]);
+    const value = arr[i]
+    if ((callback(value,i,arr))){
+      return true 
     }
   }
   return false;
@@ -85,30 +86,13 @@ console.log(methodIncludes(arr,callbackincludes));
 
 // ----------------------------------------
 // MÉTODO INDEXOF
-function methodIndexOf(arr,searchElement,positionArr){
-  const position = -1
-  if(positionArr === undefined){
-    positionArr = 0
-  }else if (positionArr>=arr.length){
-    return -1
-  }else if (positionArr<0){
-  }
-  if(positionArr>=arr.length){
-    return position
-  }else if (positionArr>=0){
-    for (let i = 0; i < arr.length; i++) {
-      if(arr[i]===searchElement){
-        position = i
+function methodIndexOf(arr, num,initvalue){
+  for (let i = initvalue; i < arr.length; i++) {
+      const value = arr[i]
+      if(value === num){
+        return i
       }
-    }
-  }else if (positionArr<=0){
-    const positionNegative =(arr.length + positionArr)
-    for (let i = positionNegative; i < arr.length; i++) {
-     if(arr[i]===searchElement){
-      position = i
-     } 
-    }
   }
-  return position
+  return -1
 }
-console.log(methodIndexOf(arr,9,3))
+console.log(methodIndexOf(arr,7,6))
