@@ -1,5 +1,6 @@
 /*Adicione seu codigo abaixo */
 
+
 let arr = [0, 1, 2, 3, 4];
 
 
@@ -70,29 +71,39 @@ console.log(methodFind(arr,callbackfind))
 
 // ---------------------------------------
 // MÉTODO INCLUDES
-function callbackincludes(value) {
-  return value === 3
-}
-function methodIncludes(arr,callback) {
+function methodIncludes(arr,index) {
   for (let i = 0; i < arr.length; i++) {
     const value = arr[i]
-    if ((callback(value,i,arr))){
+    if (value === index){
       return true 
     }
   }
   return false;
 }
-console.log(methodIncludes(arr,callbackincludes));
+console.log(methodIncludes(arr,4));
 
 // ----------------------------------------
+
+
 // MÉTODO INDEXOF
 function methodIndexOf(arr, num,initvalue){
-  for (let i = initvalue; i < arr.length; i++) {
+  if(!initvalue){
+    for (let i = 0; i < arr.length; i++) {
+        const value = arr[i]
+        if(value === num){
+          return i
+        }
+    }
+  }else{
+    for (let i = initvalue; i < arr.length; i++) {
       const value = arr[i]
       if(value === num){
         return i
       }
   }
+  }
   return -1
 }
 console.log(methodIndexOf(arr,7,6))
+
+
